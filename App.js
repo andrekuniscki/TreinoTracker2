@@ -1,13 +1,13 @@
-import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Image } from "react-native";
 
 import DetailScreen from "./screens/DetailScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ListScreen from "./screens/ListScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import SensorScreen from "./screens/SensorScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,7 +21,7 @@ function MainTabs() {
         headerTitleStyle: { fontWeight: "bold", fontSize: 18 },
         headerShadowVisible: false,
         headerTitleAlign: "center",
-        tabBarActiveTintColor: "#da291c", 
+        tabBarActiveTintColor: "#da291c",
         tabBarInactiveTintColor: "#8e8e93",
         tabBarStyle: {
           backgroundColor: "#fff",
@@ -30,7 +30,7 @@ function MainTabs() {
           elevation: 5,
           paddingBottom: 5, // dá um respiro pro ícone
           height: 60, // deixa a barra inferior um pouco mais confortável
-        }
+        },
       }}
     >
       <Tab.Screen
@@ -40,9 +40,9 @@ function MainTabs() {
           title: "TreinoTracker",
           tabBarLabel: "Início",
           tabBarIcon: ({ color, size }) => (
-            <Image 
-              source={require('./assets/images/tabIcons/inicio.png')} 
-              style={{ width: size, height: size, tintColor: color }} 
+            <Image
+              source={require("./assets/images/tabIcons/inicio.png")}
+              style={{ width: size, height: size, tintColor: color }}
             />
           ),
         }}
@@ -54,9 +54,9 @@ function MainTabs() {
           title: "Exercícios",
           tabBarLabel: "Treinos",
           tabBarIcon: ({ color, size }) => (
-            <Image 
-              source={require('./assets/images/tabIcons/treinos.png')} 
-              style={{ width: size, height: size, tintColor: color }} 
+            <Image
+              source={require("./assets/images/tabIcons/treinos.png")}
+              style={{ width: size, height: size, tintColor: color }}
             />
           ),
         }}
@@ -68,9 +68,23 @@ function MainTabs() {
           title: "Perfil",
           tabBarLabel: "Perfil",
           tabBarIcon: ({ color, size }) => (
-            <Image 
-              source={require('./assets/images/tabIcons/perfil.png')} 
-              style={{ width: size, height: size, tintColor: color }} 
+            <Image
+              source={require("./assets/images/tabIcons/perfil.png")}
+              style={{ width: size, height: size, tintColor: color }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="SensorScreen"
+        component={SensorScreen}
+        options={{
+          title: "Sensores",
+          tabBarLabel: "Sensores",
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require("./assets/images/tabIcons/sensor.png")}
+              style={{ width: size, height: size, tintColor: color }}
             />
           ),
         }}

@@ -1,10 +1,9 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { FlatList, StatusBar, StyleSheet, View } from "react-native";
 import { ExerciseCard } from "../components/Cards.js";
 import { EXERCISES } from "../data/mockExercises";
 
 export default function ListScreen({ navigation }) {
-  
   const handleLoadMore = useCallback(() => {
     console.log("Fim da lista alcançado, carregar mais...");
   }, []);
@@ -17,10 +16,18 @@ export default function ListScreen({ navigation }) {
         muscle={item.muscle}
         difficulty={item.difficulty}
         image={item.image}
-        onPress={() => navigation.navigate("DetailScreen", item)} 
+        onPress={() =>
+          navigation.navigate("DetailScreen", {
+            id: item.id,
+            name: item.name,
+            muscle: item.muscle,
+            difficulty: item.difficulty,
+            image: item.image,
+          })
+        }
       />
     ),
-    [navigation]
+    [navigation],
   );
 
   return (

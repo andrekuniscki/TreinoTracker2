@@ -3,27 +3,38 @@
     "name": "Treino-Tracker",
     "slug": "Treino-Tracker",
     "version": "1.0.0",
+    "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "treinotracker",
     "userInterfaceStyle": "automatic",
+    "permissions": ["expo-camera", "expo-location"],
     "ios": {
-      "icon": "./assets/images/icon.png"
-    },
-  },
-  "plugins": [
-    [
-      "expo-splash-screen",
-      {
-        "backgroundColor": "#208AEF",
-        "android": {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
-        }
+      "icon": "./assets/images/icon.png",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Este app utiliza a câmera para capturar fotos",
+        "NSLocationWhenInUseUsageDescription": "Este app utiliza sua localização para funcionalidades de treino",
+        "NSMotionUsageDescription": "Este app utiliza o acelerômetro para detectar movimento"
       }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#208AEF",
+          "android": {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 76
+          }
+        }
+      ]
     ]
-  ],
-  "experiments": {
-    "reactCompiler": true
   }
 }

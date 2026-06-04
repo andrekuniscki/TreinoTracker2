@@ -1,27 +1,15 @@
-import React from "react";
 import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    Platform,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; 
 
-export function ExerciseCard({ id, name, muscle, difficulty, image }) {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate("DetailScreen", { id, name, muscle, difficulty, image });
-  };
-
+export function ExerciseCard({ id, name, muscle, difficulty, image, onPress }) {
   return (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={handlePress}
-      activeOpacity={0.8}
-    >
+    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.8}>
       <View style={styles.cardContent}>
         <View style={styles.gifContainer}>
           <Image source={image} style={styles.exerciseGif} />
