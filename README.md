@@ -1,25 +1,29 @@
-# 🏋️ Treino-Tracker
+PROJETO MOBILE CODING UNINASSAU 2026.1
+Andre Kuniscki Monteiro de Albuquerque Junior
+Matricula: 01406148
 
-Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **Expo** para rastrear e gerenciar exercícios de forma profissional e intuitiva.
+# Treino-Tracker
 
-## 📱 Funcionalidades Principais
+Um aplicativo mobile completo e funcional desenvolvido com React Native e Expo para rastrear e gerenciar exercícios de forma profissional e intuitiva.
 
-### ✅ Aplicativo Completo e Funcional
+## Funcionalidades Principais
+
+### Aplicativo Completo e Funcional
 
 - App mobile real desenvolvido com React Native + Expo
 - Interface profissional e responsiva
 - Propósito claro: rastreamento e gerenciamento de exercícios
 
-### ✅ Múltiplas Telas (5 telas)
+### Múltiplas Telas (5 telas)
 
-#### 1. **Tela Inicial (HomeScreen)** 🏠
+#### 1. **Tela Inicial (HomeScreen)**
 
 - Apresentação do app com categorias de exercícios
 - Navegação para outras funcionalidades
 - Menu inferior com acesso às 5 telas principais
 - Informações principais do aplicativo
 
-#### 2. **Tela de Listagem (ListScreen)** 📋
+#### 2. **Tela de Listagem (ListScreen)**
 
 - FlatList otimizado com 10+ exercícios
 - Cards com design profissional
@@ -28,7 +32,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Ao tocar, navega para detalhes do exercício
 - Renderização otimizada com useMemo e useCallback
 
-#### 3. **Tela de Detalhes (DetailScreen)** 🔍
+#### 3. **Tela de Detalhes (DetailScreen)**
 
 - Recebe dados via navegação por parâmetros
 - Exibe informações completas do exercício
@@ -38,20 +42,20 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Botão para adicionar ao treino
 - Navegação fluida com React Navigation
 
-#### 4. **Tela de Perfil (ProfileScreen)** 👤
+#### 4. **Tela de Perfil (ProfileScreen)**
 
 - Informações do usuário
 - Metas e progresso de treino
 - Barras de progresso visual
 - Acesso a outras funcionalidades
 
-#### 5. **Tela de Sensores (SensorScreen)** ⭐
+#### 5. **Tela de Sensores (SensorScreen)**
 
 - Explore funcionalidades avançadas do dispositivo
 
-### ✅ Integração de Sensores do Dispositivo
+### Integração de Sensores do Dispositivo
 
-#### 📍 **Geolocalização (GPS)**
+#### **Geolocalização (GPS)**
 
 - Obter localização atual com precisão alta
 - Exibir latitude, longitude e altitude
@@ -59,7 +63,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Integração com Expo Location API
 - Feedback visual do carregamento
 
-#### 📷 **Câmera & Galeria**
+#### **Câmera & Galeria**
 
 - Capturar fotos com a câmera do dispositivo
 - Selecionar imagens da galeria
@@ -67,7 +71,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Permissões de câmera gerenciadas automaticamente
 - Integração com Expo ImagePicker
 
-#### 📱 **Acelerômetro (Sensor de Movimento)**
+#### **Acelerômetro (Sensor de Movimento)**
 
 - Detectar movimento e aceleração em 3 eixos (X, Y, Z)
 - Monitoramento em tempo real
@@ -75,7 +79,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Feedback visual quando movimento é detectado
 - Integração com Expo Sensors
 
-### ✅ Navegação Profissional
+### Navegação Profissional
 
 #### React Navigation Implementado
 
@@ -85,7 +89,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Headers personalizados com cores harmônicas
 - Navegação fluida e intuitiva
 
-### ✅ Componentes React Bem Estruturados
+### Componentes React Bem Estruturados
 
 #### Componentes Reutilizáveis
 
@@ -101,7 +105,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - `useMemo`: Otimização de renderização
 - `useNavigation`: Navegação programática
 
-### ✅ Interface Profissional e Responsiva
+### Interface Profissional e Responsiva
 
 #### Design Moderno
 
@@ -118,7 +122,7 @@ Um aplicativo mobile completo e funcional desenvolvido com **React Native** e **
 - Feedback visual para ações do usuário
 - Cross-platform (Android, iOS, Web)
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **React Native**: Framework para desenvolvimento mobile
 - **Expo**: Plataforma de desenvolvimento e distribuição
@@ -168,9 +172,9 @@ i
 w
 ```
 
-Ou escaneie o QR code com o app **Expo Go** no seu dispositivo móvel.
+Ou escaneie o QR code com o app Expo Go no seu dispositivo móvel.
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 treino-tracker/
@@ -207,9 +211,9 @@ treino-tracker/
     └── expo.icon/
 ```
 
-## 🔧 Sensores Implementados
+## Sensores Implementados
 
-### 1. **Geolocalização (GPS)** 📍
+### 1. **Geolocalização (GPS)**
 
 - **Funcionalidade**: Obter coordenadas atuais do dispositivo
 - **Permissão**: ACCESS_FINE_LOCATION (Android), NSLocationWhenInUseUsageDescription (iOS)
@@ -217,7 +221,7 @@ treino-tracker/
 - **Informações**: Latitude, Longitude, Altitude
 - **Uso**: Ao tocar o botão, o app solicita permissão e exibe as coordenadas
 
-### 2. **Câmera & Galeria** 📷
+### 2. **Câmera & Galeria**
 
 - **Funcionalidade**: Capturar fotos com câmera ou selecionar da galeria
 - **Permissão**: CAMERA (Android), NSCameraUsageDescription (iOS)
@@ -225,15 +229,15 @@ treino-tracker/
 - **Recursos**: Edição de imagem antes de salvar, preview
 - **Uso**: Dois botões separados para capturar ou selecionar
 
-### 3. **Acelerômetro (Sensor de Movimento)** 📱
+### 3. **Acelerômetro (Sensor de Movimento)**
 
 - **Funcionalidade**: Detectar movimento em tempo real
 - **Dados**: Aceleração em 3 eixos (X, Y, Z)
 - **API**: Expo Sensors (Accelerometer)
 - **Detecção**: Shake (movimento brusco > 2.5 magnitude)
-- **Uso**: Exibe valores do acelerómetro e feedback visual quando movimento é detectado
+- **Uso**: Exibe valores do acelerometro e feedback visual quando movimento é detectado
 
-## 💡 Critérios de Avaliação Atendidos
+## Critérios de Avaliação Atendidos
 
 | Critério               | Descrição                                      | Evidência                                    |
 | ---------------------- | ---------------------------------------------- | -------------------------------------------- |
@@ -244,19 +248,19 @@ treino-tracker/
 | **Código/Componentes** | Código limpo, componentes reutilizáveis, hooks | Componentes bem estruturados e reutilizáveis |
 | **Interface/Design**   | UI profissional, cores harmônicas, responsivo  | Design moderno com paleta consistente        |
 
-## 👤 Informações do Desenvolvedor
+## Informações do Desenvolvedor
 
 **Nome Completo**: André Kuniscki Monteiro de Albuquerque Júnior  
 **Matrícula**: 01406148
 
-## 🎨 Paleta de Cores
+## Paleta de Cores
 
 - **Primária**: `#da291c` (Vermelho)
 - **Fundo**: `#f5f5f5` (Cinza claro)
 - **Texto**: `#323131` (Cinza escuro)
 - **Border**: `#e0e0e0` (Cinza médio)
 
-## 📚 Documentação
+## Documentação
 
 - [React Native Docs](https://reactnative.dev/)
 - [Expo Docs](https://docs.expo.dev/)
@@ -264,11 +268,3 @@ treino-tracker/
 - [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/)
 - [Expo ImagePicker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
 - [Expo Sensors](https://docs.expo.dev/versions/latest/sdk/sensors/)
-
-## 📝 Licença
-
-Este projeto é fornecido como trabalho acadêmico.
-
----
-
-**Desenvolvido com ❤️ usando React Native + Expo**

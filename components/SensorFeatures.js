@@ -1,15 +1,14 @@
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    Platform,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
-// Importar apenas para mobile (não web)
 let ImagePicker = null;
 let Location = null;
 
@@ -22,7 +21,7 @@ export default function SensorFeatures() {
   const [location, setLocation] = useState(null);
   const [locationLoading, setLocationLoading] = useState(false);
 
-  // Geolocalização (apenas mobile)
+  // geolocalização (apenas mobile)
   const handleGetLocation = async () => {
     if (Platform.OS === "web") {
       Alert.alert(
@@ -65,7 +64,7 @@ export default function SensorFeatures() {
     }
   };
 
-  // Câmera/Galeria (apenas mobile)
+  // câmera/galeria (apenas mobile)
   const handlePickImage = async () => {
     if (Platform.OS === "web") {
       Alert.alert(
@@ -132,9 +131,9 @@ export default function SensorFeatures() {
         </View>
       )}
 
-      {/* Geolocalização */}
+      {}
       <View style={styles.featureCard}>
-        <Text style={styles.featureTitle}>📍 Geolocalização</Text>
+        <Text style={styles.featureTitle}>Geolocalização</Text>
         <Text style={styles.featureDescription}>
           GPS do dispositivo para obter localização em tempo real
         </Text>
@@ -166,9 +165,9 @@ export default function SensorFeatures() {
         )}
       </View>
 
-      {/* Câmera/Galeria */}
+      {}
       <View style={styles.featureCard}>
-        <Text style={styles.featureTitle}>📷 Câmera & Galeria</Text>
+        <Text style={styles.featureTitle}>Câmera & Galeria</Text>
         <Text style={styles.featureDescription}>
           Integração com câmera e galeria do dispositivo
         </Text>
@@ -182,15 +181,15 @@ export default function SensorFeatures() {
         </View>
       </View>
 
-      {/* Acelerômetro */}
+      {}
       <View style={styles.featureCard}>
-        <Text style={styles.featureTitle}>📱 Acelerômetro</Text>
+        <Text style={styles.featureTitle}>Acelerômetro</Text>
         <Text style={styles.featureDescription}>
           Sensor de movimento e detecção de gestos/shake
         </Text>
         <View style={styles.infoBox}>
           <Text style={styles.infoText}>
-            ✓ Sensor disponível no dispositivo mobile
+            Sensor disponível no dispositivo mobile
           </Text>
           <Text style={styles.infoText}>
             Detecta: movimento, aceleração, shake gesture

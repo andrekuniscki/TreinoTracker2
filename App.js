@@ -28,8 +28,8 @@ function MainTabs() {
           borderTopWidth: 1,
           borderTopColor: "#e0e0e0",
           elevation: 5,
-          paddingBottom: 5, // dá um respiro pro ícone
-          height: 60, // deixa a barra inferior um pouco mais confortável
+          paddingBottom: 5,
+          height: 60,
         },
       }}
     >

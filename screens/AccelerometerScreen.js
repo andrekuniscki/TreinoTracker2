@@ -38,7 +38,7 @@ export default function AccelerometerScreen() {
           z: parseFloat(data.z.toFixed(2)),
         });
 
-        // Detectar shake (movimento brusco)
+        // shake
         const magnitude = Math.sqrt(
           data.x * data.x + data.y * data.y + data.z * data.z,
         );
@@ -101,7 +101,7 @@ export default function AccelerometerScreen() {
           </View>
         </View>
 
-        {/* Magnitude */}
+        {}
         <View style={styles.magnitudeBox}>
           <Text style={styles.magnitudeLabel}>Magnitude Total</Text>
           <Text style={styles.magnitudeValue}>
@@ -114,21 +114,21 @@ export default function AccelerometerScreen() {
           </Text>
         </View>
 
-        {/* Shake Detection */}
+        {}
         {shakeDetected && (
           <View style={styles.shakeAlert}>
             <Text style={styles.shakeText}>🤝 Movimento Detectado!</Text>
           </View>
         )}
 
-        {/* Statistics */}
+        {}
         <View style={styles.statsBox}>
           <Text style={styles.statsLabel}>Eventos de Movimento Detectados</Text>
           <Text style={styles.statsValue}>{shakeCount}</Text>
         </View>
       </View>
 
-      {/* Controls */}
+      {}
       <View style={styles.controlsCard}>
         <Text style={styles.sectionTitle}>Controles</Text>
         <View style={styles.buttonContainer}>
@@ -149,7 +149,7 @@ export default function AccelerometerScreen() {
         </View>
       </View>
 
-      {/* Info */}
+      {}
       <View style={styles.infoCard}>
         <Text style={styles.sectionTitle}>Sobre o Acelerômetro</Text>
         <View style={styles.infoBox}>

@@ -1,132 +1,165 @@
-import { Info } from "lucide-react-native";
-import React from "react";
-import {
-  Alert,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { EXERCISES } from "../data/mockExercises";
+import { Accelerometer } from "expo-sensors";
+import { useEffect, useState } from "react";
+import { Image, Platform, StyleSheet, Text, View } from "react-native";
 
 export default function DetailScreen({ route, navigation }) {
-  const { id, name, muscle, difficulty } = route.params || {};
+  const { name, muscle, difficulty, image } = route.params || {};
 
-  const exercise = EXERCISES.find((ex) => ex.id === id);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [hasPermission, setHasPermission] = useState(null);
 
-  if (!exercise) {
+  useEffect(() => {
+    const askPermission = async () => {
+      const { status } = await Accelerometer.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    };
+    askPermission();
+
+    const SHAKE_THRESHOLD = 1.5;
+
+    const subscribe = () => {
+      Accelerometer.setUpdateInterval(100);
+      const subscription = Accelerometer.addListener((accelerometerData) => {
+        let { x, y, z } = accelerometerData;
+
+        let accelerationSum = Math.sqrt(
+          Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2),
+        );
+
+        if (accelerationSum > SHAKE_THRESHOLD) {
+          handleShakeDetected();
+        }
+      });
+      return subscription;
+    };
+
+    // dispara o feedback visual
+    const handleShakeDetected = () => {
+      console.log("Shake Detectado!");
+
+      // feedback visual ao usuário
+      setShowFeedback(true);
+
+      // some automaticamente após 2 segundos
+      setTimeout(() => {
+        setShowFeedback(false);
+      }, 2000);
+    };
+
+    const subscription = subscribe();
+
+    // evita Memory Leak
+    return () => {
+      subscription && subscription.remove();
+    };
+  }, []);
+
+  if (hasPermission === null)
+    return <Text style={styles.text}>Pedindo permissão para o sensor...</Text>;
+  if (hasPermission === false)
     return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Exercício não encontrado</Text>
-        <TouchableOpacity
-          style={styles.backButtonError}
-          onPress={() => navigation.goBack()}
-        >
-          <Text style={styles.backButtonTextError}>Voltar</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.text}>Sem acesso ao acelerômetro do celular.</Text>
     );
-  }
-
-  const handleAddToWorkout = () => {
-    Alert.alert("Sucesso!", `${exercise.name} foi adicionado ao seu treino.`, [
-      {
-        text: "Continuar",
-        style: "default",
-      },
-      {
-        text: "Ver Treino",
-        onPress: () => navigation.navigate("MainTabs", { screen: "ListScreen" })
-      
-      },
-    ]);
-  };
 
   return (
-    <ScrollView style={styles.container}>
-      <Image source={exercise.image} style={styles.headerImage} />
+    <View style={styles.container}>
+      <Image source={image} style={styles.image} />
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{name || "Nome não encontrado"}</Text>
+        <Text style={styles.subtext}>
+          Foco: {muscle || "Foco não informado"}
+        </Text>
+        <Text style={styles.subtext}>
+          Dificuldade: {difficulty || "Dificuldade não informada"}
+        </Text>
+        <Text style={styles.description}>
+          Instruções: Balance o celular após completar uma série para registrar
+          automaticamente no seu histórico.
+        </Text>
+      </View>
 
-      <View style={styles.detailsBox}>
-        <Text style={styles.category}>{exercise.muscle}</Text>
-        <Text style={styles.title}>{exercise.name}</Text>
-
-        <View style={styles.infoRow}>
-          <Info color="#da291c" size={20} />
-          <Text style={styles.description}>
-            Este exercício foca no fortalecimento do{" "}
-            {exercise.muscle.toLowerCase()}. Mantenha a postura ereta e controle
-            a respiração durante a execução.
+      {}
+      {showFeedback && (
+        <View style={styles.feedbackOverlay}>
+          <Text style={styles.feedbackText}>Série Registrada!</Text>
+          <Text style={styles.feedbackSubtext}>
+            Aceleração brusca detectada
           </Text>
         </View>
-
-        <TouchableOpacity
-          style={styles.actionButton}
-          onPress={handleAddToWorkout}
-        >
-          <Text style={styles.actionText}>Adicionar ao Treino</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f5f5f5" },
-  headerImage: {
-    width: "100%",
-    height: 240,
-    resizeMode: "cover",
-  },
-  detailsBox: {
+  container: {
+    flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    marginTop: -20,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  category: {
-    fontSize: 12,
-    color: "#da291c",
-    fontWeight: "600",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
+  image: {
+    width: 250,
+    height: 250,
+    resizeMode: "contain",
+    marginTop: -50,
+  },
+  textContainer: {
+    padding: 20,
+    alignItems: "center",
+    gap: 10,
   },
   title: {
-    fontSize: 28,
-    fontWeight: "800",
+    fontSize: 26,
+    fontWeight: "bold",
     color: "#323131",
-    marginVertical: 8,
+    textAlign: "center",
   },
-  infoRow: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    gap: 12,
-    marginVertical: 16,
-    paddingVertical: 12,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: "#e0e0e0",
+  subtext: {
+    fontSize: 16,
+    color: "#666",
   },
   description: {
-    flex: 1,
     fontSize: 14,
-    color: "#666",
-    lineHeight: 20,
-  },
-  actionButton: {
+    color: "#da291c",
+    fontStyle: "italic",
+    textAlign: "center",
     marginTop: 20,
+    paddingHorizontal: 20,
+    fontWeight: "bold",
   },
-  errorContainer: {
-    flex: 1,
-    justifyContent: "center",
+  text: {
+    fontSize: 16,
+    color: "#da291c",
+    textAlign: "center",
+    padding: 20,
+  },
+
+  // ESTILOS DO FEEDBACK VISUAL
+  feedbackOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(218, 41, 28, 0.9)",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    justifyContent: "center",
+    zIndex: 1000,
+    ...Platform.select({
+      web: { cursor: "none" },
+    }),
   },
-  errorText: {
-    fontSize: 18,
-    color: "#323131",
+  feedbackEmoji: {
+    fontSize: 70,
     marginBottom: 20,
+  },
+  feedbackText: {
+    fontSize: 28,
+    color: "#fff",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+  feedbackSubtext: {
+    fontSize: 14,
+    color: "#fff",
+    opacity: 0.8,
+    marginTop: 10,
   },
 });
