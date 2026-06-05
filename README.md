@@ -147,7 +147,7 @@ Um aplicativo mobile completo e funcional desenvolvido com React Native e Expo p
 | Componentes React      | ✅     | Componentes reutilizáveis e hooks      |
 | Interface Profissional | ✅     | Design moderno e responsivo            |
 
-## 🚀 Como Instalar
+## Como Instalar
 
 ```bash
 # Clone o repositório
@@ -158,7 +158,7 @@ cd treino-tracker
 npm install
 ```
 
-## ▶️ Como Executar
+## Como Executar
 
 ```bash
 # Inicie o servidor Expo
